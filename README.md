@@ -34,4 +34,10 @@ const val1 = await repeatPromise(promiseFunc, 5);
 // You can also specify a delay (ms) between attempts
 // This example waits 1 second between attempts
 const val2 = await repeatPromise(promiseFunc, 5, 1000);
+
+
+// You could also attempt an infinite amount of times
+const val3 = await repeatPromise(promiseFunc, Infinity, 1000);
 ~~~
+
+Try this out on [RunKit](https://npm.runkit.com/@jakedeichert/promise-repeater)
