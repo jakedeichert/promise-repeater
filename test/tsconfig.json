@@ -1,0 +1,17 @@
+// NOTE: this config is ONLY for VS Code intellisense. It's not used for compiling the test suite.
+{
+  "compilerOptions": {
+    "baseUrl": "../src",
+    // This enables --noImplicitAny, --noImplicitThis, --alwaysStrict, --strictNullChecks
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true
+  },
+  // Needed so typings are included
+  "include": [
+    "../src/**/*",
+    "../typings/**/*",
+    // Needed so VS Code intellisense can find imported modules
+    "./**/*"
+  ]
+}
