@@ -1,17 +1,17 @@
 export const repeatPromise = (
-  promiseToAttempt: () => Promise<any>,
+  promiseFunc: () => Promise<any>,
   maxAttempts: number,
   sleepMs: number = 0
 ): any => {
   const attempt = (attemptCount: number) => {
     return new Promise((resolve, reject) => {
-      promiseToAttempt()
+      promiseFunc()
         .then(result => {
           resolve(result);
         })
-        .catch(() => {
+        .catch(rejectedValue => {
           if (attemptCount === maxAttempts) {
-            return reject('max attempts reached');
+            return reject(rejectedValue);
           }
           // Failed attempt. Try again after sleepMs
           setTimeout(() => {
