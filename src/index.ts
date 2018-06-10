@@ -1,7 +1,11 @@
-export const repeatPromise = (maxAttempts, sleepMs, promise) => {
-  const attempt = attemptCount => {
+export const repeatPromise = (
+  promiseToAttempt: () => Promise<any>,
+  maxAttempts: number,
+  sleepMs: number = 0
+): any => {
+  const attempt = (attemptCount: number) => {
     return new Promise((resolve, reject) => {
-      promise()
+      promiseToAttempt()
         .then(result => {
           resolve(result);
         })

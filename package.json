@@ -3,15 +3,18 @@
   "description": "Repeat promises until they resolve successfully or hit the maximum attempt limit",
   "version": "0.1.0",
   "author": "Jake Deichert",
-  "private": true,
   "license": "MIT",
+  "main": "dist/index.js",
   "scripts": {
     "lint": "create-app lint",
     "test": "create-app test",
     "format": "create-app format",
-    "build": "echo DO_THIS"
+    "clean": "rm -rf dist .rpt2_cache",
+    "build": "yarn clean && microbundle",
+    "dev": "yarn clean && microbundle watch"
   },
   "devDependencies": {
-    "@jakedeichert/create-app-cli": "^1.2.6"
+    "@jakedeichert/create-app-cli": "^1.2.6",
+    "microbundle": "^0.4.4"
   }
 }
