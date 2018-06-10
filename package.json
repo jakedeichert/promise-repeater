@@ -1,0 +1,17 @@
+{
+  "name": "@jakedeichert/promise-repeater",
+  "description": "Repeat promises until they resolve successfully or hit the maximum attempt limit",
+  "version": "0.1.0",
+  "author": "Jake Deichert",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "lint": "create-app lint",
+    "test": "create-app test",
+    "format": "create-app format",
+    "build": "echo DO_THIS"
+  },
+  "devDependencies": {
+    "@jakedeichert/create-app-cli": "^1.2.6"
+  }
+}
