@@ -1,6 +1,15 @@
 import { repeatPromise } from 'index';
+import * as mockTimers from './utils/mockTimers';
 
 describe('repeatPromise', () => {
+  beforeEach(() => {
+    mockTimers.before();
+  });
+
+  afterEach(() => {
+    mockTimers.after();
+  });
+
   test('should resolve to the value of the promise', async () => {
     const promiseFunc = () => {
       return new Promise(resolve => {
@@ -66,5 +75,26 @@ describe('repeatPromise', () => {
     expect(err).toBeNull();
     expect(counter).toBe(3);
     expect(value).toBe('RETURN_VALUE');
+  });
+
+  test('should obey the sleep timeout option', async () => {
+    global.setTimeout = jest.fn((cb, ms) => {
+      expect(ms).toBe(100);
+      expect(cb).toEqual(expect.any(Function));
+      cb();
+    });
+
+    let counter = 0;
+    const promiseFunc = () => {
+      counter++;
+      return new Promise((resolve, reject) => {
+        if (counter === 3) return resolve('RETURN_VALUE');
+        reject('FAILED');
+      });
+    };
+
+    const val = await repeatPromise(promiseFunc, 4, 100);
+    expect(val).toBe('RETURN_VALUE');
+    expect(setTimeout).toHaveBeenCalledTimes(2);
   });
 });
