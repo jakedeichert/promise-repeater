@@ -17,5 +17,9 @@
   "devDependencies": {
     "@jakedeichert/create-app-cli": "^1.2.6",
     "microbundle": "^0.4.4"
+  },
+  "dependencies": {
+    "@types/jest": "^23.0.0",
+    "@types/node": "^10.3.2"
   }
 }
