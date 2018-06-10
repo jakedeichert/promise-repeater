@@ -19,7 +19,7 @@ import { repeatPromise } from '@jakedeichert/promise-repeater';
 
 // Create a function that returns the promise you want to attempt multiple times
 const promiseFunc = () => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         if (Math.random() < 0.5) return reject();
         resolve('success');
     });
