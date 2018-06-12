@@ -1,7 +1,7 @@
 {
   "name": "@jakedeichert/promise-repeater",
   "description": "Repeat promises until they resolve successfully or hit the maximum attempt limit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Jake Deichert",
   "license": "MIT",
   "main": "dist/index.js",
@@ -14,12 +14,10 @@
     "build:fix": "mv dist/src/* dist && rm -rf dist/src dist/test",
     "dev": "yarn clean && microbundle watch"
   },
-  "dependencies": {
-    "@types/jest": "^23.0.0",
-    "@types/node": "^10.3.2"
-  },
   "devDependencies": {
-    "@jakedeichert/create-app-cli": "^1.2.6",
+    "@jakedeichert/create-app-cli": "^1.2.8",
+    "@types/jest": "^23.0.1",
+    "@types/node": "^10.3.2",
     "microbundle": "^0.4.4"
   }
 }
