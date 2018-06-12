@@ -1,8 +1,9 @@
 {
   "name": "@jakedeichert/promise-repeater",
   "description": "Repeat promises until they resolve successfully or hit the maximum attempt limit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Jake Deichert",
+  "repository": "github:jakedeichert/promise-repeater",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
