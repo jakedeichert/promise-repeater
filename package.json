@@ -10,15 +10,12 @@
     "lint": "create-app lint",
     "test": "create-app test",
     "format": "create-app format",
-    "clean": "rm -rf dist .rpt2_cache",
-    "build": "yarn clean && microbundle && yarn build:fix",
-    "build:fix": "mv dist/src/* dist && rm -rf dist/src dist/test",
-    "dev": "yarn clean && microbundle watch"
+    "build": "create-app build",
+    "dev": "create-app dev"
   },
   "devDependencies": {
     "@jakedeichert/create-app-cli": "^1.2.8",
     "@types/jest": "^23.0.1",
-    "@types/node": "^10.3.2",
-    "microbundle": "^0.4.4"
+    "@types/node": "^10.3.2"
   }
 }

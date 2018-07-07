@@ -4,5 +4,4 @@ test/
 .eslintrc.js
 .gitignore
 .travis.yml
-createapp.config.js
 jsconfig.json
