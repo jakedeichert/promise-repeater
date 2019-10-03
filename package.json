@@ -10,6 +10,7 @@
     "lint": "eslint . --ext ts,js",
     "test": "create-app test",
     "format": "prettier '{src,test}/**/*.{js,ts,json}' '*.{js,ts,json}' --write",
+    "format:check": "prettier '{src,test}/**/*.{js,ts,json}' '*.{js,ts,json}' --list-different",
     "build": "create-app build",
     "dev": "create-app dev"
   },
