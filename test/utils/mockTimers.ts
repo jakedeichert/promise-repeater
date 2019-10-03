@@ -1,9 +1,9 @@
 let originalSetTimeout = global.setTimeout;
 
 export const before = () => {
-  originalSetTimeout = global.setTimeout;
+    originalSetTimeout = global.setTimeout;
 };
 
 export const after = () => {
-  global.setTimeout = originalSetTimeout;
+    global.setTimeout = originalSetTimeout;
 };
