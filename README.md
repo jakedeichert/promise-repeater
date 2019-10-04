@@ -1,4 +1,4 @@
-# promise-repeater
+# promise-repeater [![build status][ci_badge]][github_ci]
 
 ⏰ Repeat promises until they resolve successfully or hit the maximum attempt limit
 
@@ -41,3 +41,12 @@ const val3 = await repeatPromise(promiseFunc, Infinity, 1000);
 ~~~
 
 Try this out on [RunKit](https://npm.runkit.com/@jakedeichert/promise-repeater)
+
+
+
+
+
+
+<!-- Badge from here: https://github.com/atrox/github-actions-badge -->
+[github_ci]: https://actions-badge.atrox.dev/jakedeichert/promise-repeater/goto
+[ci_badge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fjakedeichert%2Fpromise-repeater%2Fbadge&label=build&logo=none
