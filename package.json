@@ -8,17 +8,18 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint . --ext ts,js",
-    "test": "create-app test",
+    "test": "jest",
     "format": "prettier '{src,test}/**/*.{js,ts,json}' '*.{js,ts,json}' --write",
     "format:check": "prettier '{src,test}/**/*.{js,ts,json}' '*.{js,ts,json}' --list-different",
-    "build": "create-app build",
-    "dev": "create-app dev"
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc"
   },
   "devDependencies": {
     "@jakedeichert/eslint-config": "^4.0.5",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.9",
     "jest": "^24.9.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.3"
   }
 }
