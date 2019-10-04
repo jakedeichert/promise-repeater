@@ -2,5 +2,4 @@ src/
 test/
 .eslintrc.js
 .gitignore
-.travis.yml
 tsconfig.json
