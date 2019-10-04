@@ -1,5 +1,5 @@
-import { repeatPromise } from 'index';
-import * as mockTimers from './utils/mockTimers';
+import { repeatPromise } from '@src/index';
+import * as mockTimers from '@test/utils/mockTimers';
 
 beforeEach(() => {
     mockTimers.before();
