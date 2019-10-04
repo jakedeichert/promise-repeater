@@ -7,15 +7,23 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "create-app lint",
-    "test": "create-app test",
-    "format": "create-app format",
-    "build": "create-app build",
-    "dev": "create-app dev"
+    "lint": "eslint . --ext ts,js --ignore-pattern dist",
+    "test": "jest --verbose",
+    "test:watch": "npm run test -- --watch",
+    "format": "prettier '{src,test}/**/*.{js,ts,json}' '*.{js,ts,json}' --write",
+    "format:check": "prettier '{src,test}/**/*.{js,ts,json}' '*.{js,ts,json}' --list-different",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc"
   },
   "devDependencies": {
-    "@jakedeichert/create-app-cli": "^1.2.8",
-    "@types/jest": "^23.0.1",
-    "@types/node": "^10.3.2"
+    "@jakedeichert/eslint-config": "^4.0.5",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.9",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.3"
   }
 }
