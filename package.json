@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "eslint . --ext ts,js",
+    "lint": "eslint . --ext ts,js --ignore-pattern dist",
     "test": "jest --verbose",
     "test:watch": "npm run test -- --watch",
     "format": "prettier '{src,test}/**/*.{js,ts,json}' '*.{js,ts,json}' --write",
@@ -19,6 +19,8 @@
     "@jakedeichert/eslint-config": "^4.0.5",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.9",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.1.0",
