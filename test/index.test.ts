@@ -1,15 +1,15 @@
 import { repeatPromise } from 'index';
 import * as mockTimers from './utils/mockTimers';
 
+beforeEach(() => {
+    mockTimers.before();
+});
+
+afterEach(() => {
+    mockTimers.after();
+});
+
 describe('repeatPromise', () => {
-    beforeEach(() => {
-        mockTimers.before();
-    });
-
-    afterEach(() => {
-        mockTimers.after();
-    });
-
     test('should resolve to the value of the promise', async () => {
         const promiseFunc = () => {
             return new Promise(resolve => {
