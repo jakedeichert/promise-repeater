@@ -78,6 +78,7 @@ describe('repeatPromise', () => {
     });
 
     test('should obey the sleep timeout option', async () => {
+        // @ts-ignore
         global.setTimeout = jest.fn((cb, ms) => {
             expect(ms).toBe(100);
             expect(cb).toEqual(expect.any(Function));
@@ -95,6 +96,6 @@ describe('repeatPromise', () => {
 
         const val = await repeatPromise(promiseFunc, 4, 100);
         expect(val).toBe('RETURN_VALUE');
-        expect(setTimeout).toHaveBeenCalledTimes(2);
+        expect(global.setTimeout).toHaveBeenCalledTimes(2);
     });
 });
