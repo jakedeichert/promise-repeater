@@ -3,3 +3,7 @@ test/
 .eslintrc.js
 .gitignore
 tsconfig.json
+yarn.lock
+package-lock.json
+.prettierrc.toml
+.DS_Store
