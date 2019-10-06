@@ -1,5 +1,9 @@
 module.exports = {
-    extends: '@jakedeichert/eslint-config',
+    root: true,
+    extends: [
+        '@jakedeichert/eslint-config',
+        'plugin:@typescript-eslint/recommended',
+    ],
 
     // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
     parser: '@typescript-eslint/parser',
@@ -12,5 +16,9 @@ module.exports = {
     rules: {
         // Disable things prettier handles
         '@typescript-eslint/indent': 'off',
+        '@typescript-eslint/no-use-before-define': [
+            'error',
+            { functions: false },
+        ],
     },
 };

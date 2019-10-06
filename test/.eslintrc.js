@@ -1,5 +1,8 @@
 module.exports = {
-    extends: '@jakedeichert/eslint-config/test',
+    extends: [
+        '@jakedeichert/eslint-config/test',
+        'plugin:@typescript-eslint/recommended',
+    ],
 
     // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
     parser: '@typescript-eslint/parser',
