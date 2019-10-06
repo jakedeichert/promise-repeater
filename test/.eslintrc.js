@@ -1,4 +1,5 @@
 module.exports = {
+    root: true,
     extends: [
         '@jakedeichert/eslint-config/test',
         'plugin:@typescript-eslint/recommended',
