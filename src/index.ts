@@ -7,7 +7,7 @@ interface RepeatBuilder {
 
 export function repeat(promiseFunc: () => Promise<any>): RepeatBuilder {
     const config = {
-        maxAttempts: 0,
+        maxAttempts: 1,
         delayBetweenAttemptsMs: 0,
     };
 
@@ -39,7 +39,9 @@ export function repeat(promiseFunc: () => Promise<any>): RepeatBuilder {
                 throw error;
             }
             // Failed attempt. Delay and then try again.
-            await sleep(config.delayBetweenAttemptsMs);
+            if (config.delayBetweenAttemptsMs) {
+                await sleep(config.delayBetweenAttemptsMs);
+            }
             result = await attempt();
         }
         return result;

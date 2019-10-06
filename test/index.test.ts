@@ -10,7 +10,7 @@ afterEach(() => {
 });
 
 describe('repeatPromise', () => {
-    test('should resolve to the value of the promise', async () => {
+    test('resolves to the value of the promise', async () => {
         const promiseFunc = (): Promise<string> => {
             return new Promise((resolve): void => {
                 resolve('RETURN_VALUE');
@@ -22,7 +22,7 @@ describe('repeatPromise', () => {
         expect(val).toBe('RETURN_VALUE');
     });
 
-    test('should reject when max attempts have been reached', async () => {
+    test(`rejects when there's no max attempts configured`, async () => {
         let rejectedValue = null;
         const promiseFunc = (): Promise<void> => {
             return new Promise((_, reject): void => {
@@ -31,16 +31,14 @@ describe('repeatPromise', () => {
         };
 
         try {
-            await repeat(promiseFunc)
-                .maxAttempts(1)
-                .start();
+            await repeat(promiseFunc).start();
         } catch (e) {
             rejectedValue = e;
         }
         expect(rejectedValue).toBe('FAILED');
     });
 
-    test('should reject after the correct amount of max attempts', async () => {
+    test('rejects after the max attempts limit has been reached', async () => {
         let counter = 0;
         let rejectedValue = null;
         const promiseFunc = (): Promise<void> => {
@@ -61,7 +59,7 @@ describe('repeatPromise', () => {
         expect(counter).toBe(4);
     });
 
-    test('should resolve if under the max attempt limit', async () => {
+    test('resolves if under the max attempt limit', async () => {
         let counter = 0;
         let err = null;
         let value = null;
@@ -85,7 +83,7 @@ describe('repeatPromise', () => {
         expect(value).toBe('RETURN_VALUE');
     });
 
-    test('should obey the sleep timeout option', async () => {
+    test('obeys the configured delay between attempts', async () => {
         global.setTimeout = jest.fn((cb, ms) => {
             expect(ms).toBe(100);
             expect(cb).toEqual(expect.any(Function));
@@ -108,5 +106,27 @@ describe('repeatPromise', () => {
             .start();
         expect(val).toBe('RETURN_VALUE');
         expect(global.setTimeout).toHaveBeenCalledTimes(2);
+    });
+
+    test(`doesn't use setTimeout if there's no delay configured`, async () => {
+        global.setTimeout = jest.fn(cb => {
+            cb();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        }) as any;
+
+        let counter = 0;
+        const promiseFunc = async (): Promise<string> => {
+            counter++;
+            if (counter === 3) {
+                return 'RETURN_VALUE';
+            }
+            throw 'FAILED';
+        };
+
+        const val = await repeat(promiseFunc)
+            .maxAttempts(4)
+            .start();
+        expect(val).toBe('RETURN_VALUE');
+        expect(global.setTimeout).toHaveBeenCalledTimes(0);
     });
 });
