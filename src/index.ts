@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface RepeatBuilder {
     maxAttempts(attempts: number): RepeatBuilder;
+    unlimitedAttempts(): RepeatBuilder;
     delay(delayBetweenAttemptsMs: number): RepeatBuilder;
     start(): Promise<any>;
 }
@@ -18,6 +19,10 @@ export function repeat(promiseFunc: () => Promise<any>): RepeatBuilder {
     const self: RepeatBuilder = {
         maxAttempts(attempts: number): RepeatBuilder {
             config.maxAttempts = attempts;
+            return this;
+        },
+        unlimitedAttempts(): RepeatBuilder {
+            config.maxAttempts = Infinity;
             return this;
         },
         delay(delayBetweenAttemptsMs: number): RepeatBuilder {

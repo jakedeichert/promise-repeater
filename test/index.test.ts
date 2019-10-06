@@ -16,8 +16,19 @@ describe('repeatPromise', () => {
                 resolve('RETURN_VALUE');
             });
         };
+        const val = await repeat(promiseFunc).start();
+        expect(val).toBe('RETURN_VALUE');
+    });
+
+    test('allows unlimited attempts', async () => {
+        let counter = 0;
+        const promiseFunc = async (): Promise<string> => {
+            counter++;
+            if (counter === 5) return 'RETURN_VALUE';
+            throw 'FAILED';
+        };
         const val = await repeat(promiseFunc)
-            .maxAttempts(1)
+            .unlimitedAttempts()
             .start();
         expect(val).toBe('RETURN_VALUE');
     });
