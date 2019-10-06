@@ -19,7 +19,7 @@ import { repeat } from '@jakedeichert/promise-repeater';
 
 // Create an async/promise function that you want to attempt multiple times.
 const promiseFunc = async () => {
-    if (Math.random() < 0.5) return throw new Error();
+    if (Math.random() < 0.5) throw new Error();
     return 'success';
 };
 
