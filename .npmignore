@@ -1,8 +1,10 @@
 src/
 test/
+.github/
 .eslintrc.js
 .gitignore
 tsconfig.json
+jest.config.js
 yarn.lock
 package-lock.json
 .prettierrc.toml
