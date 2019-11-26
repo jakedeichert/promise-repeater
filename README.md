@@ -47,4 +47,4 @@ Try this out on [RunKit](https://npm.runkit.com/@jakedeichert/promise-repeater)
 
 <!-- Badge from here: https://github.com/atrox/github-actions-badge -->
 [github_ci]: https://actions-badge.atrox.dev/jakedeichert/promise-repeater/goto
-[ci_badge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fjakedeichert%2Fpromise-repeater%2Fbadge&label=build&logo=none
+[ci_badge]: https://github.com/jakedeichert/promise-repeater/workflows/CI/badge.svg?branch=master
