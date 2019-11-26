@@ -45,6 +45,5 @@ Try this out on [RunKit](https://npm.runkit.com/@jakedeichert/promise-repeater)
 
 
 
-<!-- Badge from here: https://github.com/atrox/github-actions-badge -->
-[github_ci]: https://actions-badge.atrox.dev/jakedeichert/promise-repeater/goto
+[github_ci]: https://github.com/jakedeichert/promise-repeater/actions?query=workflow%3ACI
 [ci_badge]: https://github.com/jakedeichert/promise-repeater/workflows/CI/badge.svg?branch=master
