@@ -6,9 +6,7 @@
 ## Installation
 
 ~~~sh
-yarn add @jakedeichert/promise-repeater
-# or
-npm i @jakedeichert/promise-repeater
+npm install @jakedeichert/promise-repeater
 ~~~
 
 
