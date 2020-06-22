@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 interface RepeatBuilder {
     maxAttempts(attempts: number): RepeatBuilder;
     unlimitedAttempts(): RepeatBuilder;
