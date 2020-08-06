@@ -27,9 +27,7 @@ describe('repeatPromise', () => {
             if (counter === 5) return 'RETURN_VALUE';
             throw 'FAILED';
         };
-        const val = await repeat(promiseFunc)
-            .unlimitedAttempts()
-            .start();
+        const val = await repeat(promiseFunc).unlimitedAttempts().start();
         expect(val).toBe('RETURN_VALUE');
     });
 
@@ -60,9 +58,7 @@ describe('repeatPromise', () => {
         };
 
         try {
-            await repeat(promiseFunc)
-                .maxAttempts(4)
-                .start();
+            await repeat(promiseFunc).maxAttempts(4).start();
         } catch (e) {
             rejectedValue = e;
         }
@@ -83,9 +79,7 @@ describe('repeatPromise', () => {
         };
 
         try {
-            value = await repeat(promiseFunc)
-                .maxAttempts(4)
-                .start();
+            value = await repeat(promiseFunc).maxAttempts(4).start();
         } catch (e) {
             err = e;
         }
@@ -111,16 +105,13 @@ describe('repeatPromise', () => {
             throw 'FAILED';
         };
 
-        const val = await repeat(promiseFunc)
-            .maxAttempts(4)
-            .delay(100)
-            .start();
+        const val = await repeat(promiseFunc).maxAttempts(4).delay(100).start();
         expect(val).toBe('RETURN_VALUE');
         expect(global.setTimeout).toHaveBeenCalledTimes(2);
     });
 
     test(`doesn't use setTimeout if there's no delay configured`, async () => {
-        global.setTimeout = jest.fn(cb => {
+        global.setTimeout = jest.fn((cb) => {
             cb();
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }) as any;
@@ -134,9 +125,7 @@ describe('repeatPromise', () => {
             throw 'FAILED';
         };
 
-        const val = await repeat(promiseFunc)
-            .maxAttempts(4)
-            .start();
+        const val = await repeat(promiseFunc).maxAttempts(4).start();
         expect(val).toBe('RETURN_VALUE');
         expect(global.setTimeout).toHaveBeenCalledTimes(0);
     });
