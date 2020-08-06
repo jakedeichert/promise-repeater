@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-interface RepeatBuilder {
-    maxAttempts(attempts: number): RepeatBuilder;
-    unlimitedAttempts(): RepeatBuilder;
-    delay(delayBetweenAttemptsMs: number): RepeatBuilder;
-    start(): Promise<any>;
+interface RepeatBuilder<T> {
+    maxAttempts(attempts: number): RepeatBuilder<T>;
+    unlimitedAttempts(): RepeatBuilder<T>;
+    delay(delayBetweenAttemptsMs: number): RepeatBuilder<T>;
+    start(): Promise<T>;
 }
 
-export function repeat(promiseFunc: () => Promise<any>): RepeatBuilder {
+export function repeat<T>(promiseFunc: () => Promise<T>): RepeatBuilder<T> {
     const config = {
         maxAttempts: 1,
         delayBetweenAttemptsMs: 0,
@@ -16,25 +15,25 @@ export function repeat(promiseFunc: () => Promise<any>): RepeatBuilder {
         attempts: 0,
     };
 
-    const self: RepeatBuilder = {
-        maxAttempts(attempts: number): RepeatBuilder {
+    const self: RepeatBuilder<T> = {
+        maxAttempts(attempts: number): RepeatBuilder<T> {
             config.maxAttempts = attempts;
             return this;
         },
-        unlimitedAttempts(): RepeatBuilder {
+        unlimitedAttempts(): RepeatBuilder<T> {
             config.maxAttempts = Infinity;
             return this;
         },
-        delay(delayBetweenAttemptsMs: number): RepeatBuilder {
+        delay(delayBetweenAttemptsMs: number): RepeatBuilder<T> {
             config.delayBetweenAttemptsMs = delayBetweenAttemptsMs;
             return this;
         },
-        start(): Promise<any> {
+        start(): Promise<T> {
             return attempt();
         },
     };
 
-    async function attempt(): Promise<any> {
+    async function attempt(): Promise<T> {
         state.attempts++;
         let result;
         try {
